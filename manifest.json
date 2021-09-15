@@ -1,0 +1,10 @@
+{
+  "Name": "Basic Harmony Project Template",
+  "Author": "Vertigon",
+  "Version": "0.1.0",
+  "Description": "Template for small Harmony-based SDV mods.",
+  "UniqueID": "Vertigon.$safeprojectname$",
+  "EntryDll": "$safeprojectname$.dll",
+  "MinimumApiVersion": "3.0.0",
+  "UpdateKeys": [ ]
+}
