@@ -12,32 +12,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see https://www.gnu.org/licenses/.
 
-using HarmonyLib;
-using StardewModdingAPI;
-using StardewValley;
-using System;
-
-namespace $safeprojectname$
+namespace BasicSDVHarmonyPatchProjectTemplate
 {
-	public class HarmonyPatchTemplateClass
+	class ContentPackData
 	{
 
-		/// <returns><c>True</c> if successfully patched, <c>False</c> if Exception is encountered.</returns>
-		public static bool ApplyHarmonyPatches()
-		{
-			try
-			{
-				harmony harmony = new harmony(Globals.Manifest.UniqueID);
-
-				// insert patching code
-
-				return true;
-			}
-			catch (Exception e)
-			{
-				Globals.Monitor.Log(e.ToString(), LogLevel.Error);
-				return false;
-			}
-		}
 	}
 }

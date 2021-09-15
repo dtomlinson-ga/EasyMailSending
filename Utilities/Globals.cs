@@ -14,13 +14,15 @@
 
 using StardewModdingAPI;
 
-namespace $safeprojectname$
+namespace BasicSDVHarmonyPatchProjectTemplate
 {
-	class Globals
+	internal class Globals
 	{
+		public static AssetEditor AssetEditor { get; set; }
 		public static IManifest Manifest { get; set; }
 		public static ModConfig Config { get; set; }
 		public static IModHelper Helper { get; set; }
 		public static IMonitor Monitor { get; set; }
+		public static ContentPatcherHelper PackHelper { get; set; }
 	}
 }

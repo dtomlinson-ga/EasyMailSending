@@ -12,45 +12,30 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see https://www.gnu.org/licenses/.
 
+using HarmonyLib;
 using StardewModdingAPI;
+using System;
 
 namespace BasicSDVHarmonyPatchProjectTemplate
 {
-	internal class AssetEditor : IAssetEditor
+	class HarmonyPatches
 	{
-		
-		/// <summary>
-		/// Attempts to load mod assets.
-		/// </summary>
-		/// <returns><c>True</c> if successful, <c>False</c> otherwise.</returns>
-		public static bool LoadAssets()
+
+		/// <returns><c>True</c> if successfully patched, <c>False</c> if Exception is encountered.</returns>
+		public static bool ApplyHarmonyPatches()
 		{
-			return false;
+			try
+			{
+				Harmony harmony = new(Globals.Manifest.UniqueID);
+				harmony.PatchAll();
+
+				return true;
+			}
+			catch (Exception e)
+			{
+				Globals.Monitor.Log(e.ToString(), LogLevel.Error);
+				return false;
+			}
 		}
-
-		/// <summary>
-		/// Utilized by SMAPI to determine whether an asset should be edited.
-		/// </summary>
-		public bool CanEdit<T>(IAssetInfo asset)
-		{
-			return false;
-		}
-
-		/// <summary>
-		/// Utilized by SMAPI to determine what edits should be made to an asset.
-		/// </summary>
-		public void Edit<T>(IAssetData asset)
-		{
-
-		}
-
-		/// <summary>
-		/// This prevents cached values from being used if the player has changed config options.
-		/// </summary>
-		public static void InvalidateCache()
-		{
-
-		}
-
 	}
 }

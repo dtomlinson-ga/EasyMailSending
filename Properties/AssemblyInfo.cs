@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("$safeprojectname$")]
+[assembly: AssemblyTitle("BasicSDVHarmonyPatchProjectTemplate")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("$safeprojectname$")]
-[assembly: AssemblyCopyright("Copyright © Vertigon 2021")]
+[assembly: AssemblyProduct("BasicSDVHarmonyPatchProjectTemplate")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("$guid1$")]
+[assembly: Guid("be5b512e-7ad6-4d0b-a981-0ceeadc52b42")]
 
 // Version information for an assembly consists of the following four values:
 //

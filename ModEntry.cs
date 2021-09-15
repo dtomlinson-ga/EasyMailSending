@@ -1,20 +1,8 @@
-﻿// Copyright (C) 2021 Vertigon
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-// 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-// 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see https://www.gnu.org/licenses/.
+﻿using StardewModdingAPI;
+using StardewValley;
+using System;
 
-using StardewModdingAPI;
-
-namespace $safeprojectname$
+namespace BasicSDVHarmonyPatchProjectTemplate
 {
 	/// <summary>The mod entry point.</summary>
 	public class ModEntry : Mod
@@ -25,14 +13,50 @@ namespace $safeprojectname$
 		/// <param name="helper" />
 		public override void Entry(IModHelper helper)
 		{
+			SetUpGlobals(helper);
+			SetUpEventHooks();
+			SetUpConsoleCommands();
+			SetUpPatches();
+			SetUpAssets();
+		}
+
+		private void SetUpPatches()
+		{
+			Monitor.Log(HarmonyPatches.ApplyHarmonyPatches() ? "Patches successfully applied" : "Failed to apply patches");
+		}
+		private void SetUpAssets()
+		{
+			Monitor.Log(AssetEditor.LoadAssets() ? "Loaded assets" : "Failed to load assets");
+		}
+
+		private void SetUpEventHooks()
+		{
+			Globals.Helper.Events.GameLoop.GameLaunched += (sender, args) =>
+			{
+				ModConfigMenuHelper.RegisterModOptions();
+				SetUpAPIs();
+			};
+		}
+		private void SetUpAPIs()
+		{
+			Monitor.Log(ContentPatcherHelper.TryLoadContentPatcherAPI() ? "Content Patcher API loaded" : "Failed to load Content Patcher API - ignoring extended content pack functionality");
+			Monitor.Log(ModConfigMenuHelper.TryLoadModConfigMenu() ? "GMCM API loaded" : "Failed to load GMCM API - reverting to basic config.json functionality");
+		}
+
+		private void SetUpConsoleCommands()
+		{
+
+		}
+
+		private void SetUpGlobals(IModHelper helper)
+		{
+			Globals.AssetEditor = new AssetEditor();
+			helper.Content.AssetEditors.Add(Globals.AssetEditor);
 			Globals.Config = helper.ReadConfig<ModConfig>();
 			Globals.Helper = helper;
 			Globals.Monitor = Monitor;
 			Globals.Manifest = ModManifest;
-
-			modAssetEditor = new AssetEditor();
-			helper.Content.AssetEditors.Add(modAssetEditor);
-
+			Globals.PackHelper = new ContentPatcherHelper();
 		}
 	}
 }

@@ -18,7 +18,7 @@ using StardewModdingAPI;
 using StardewModdingAPI.Utilities;
 using System;
 
-namespace $safeprojectname$
+namespace BasicSDVHarmonyPatchProjectTemplate
 {
 	/// <summary>
 	/// API for interacting with spacechase0's Generic Mod Config Menu.

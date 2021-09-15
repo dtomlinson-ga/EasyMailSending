@@ -12,15 +12,17 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see https://www.gnu.org/licenses/.
 
+using StardewModdingAPI;
 using System;
 
-namespace $safeprojectname$
+namespace BasicSDVHarmonyPatchProjectTemplate
 {
 	/// <summary>
 	/// Collection of methods to simplify the process of adding Generic Mod Config Menu options.
 	/// </summary>
-	class ModConfigMenuHelper
+	internal class ModConfigMenuHelper
 	{
+
 		private static IGenericModConfigMenuAPI api;
 
 		/// <summary>
@@ -44,23 +46,22 @@ namespace $safeprojectname$
 					() => Globals.Helper.WriteConfig(Globals.Config)
 				);
 
-				RegisterModOptions();
 				return true;
 			}
 			catch (Exception e)
 			{
-				Globals.Monitor.Log("Failed to register GMCM menu - skipping mod menu setup", StardewModdingAPI.LogLevel.Error);
-				Globals.Monitor.Log(e.Message, StardewModdingAPI.LogLevel.Error);
+				Globals.Monitor.Log("Failed to register GMCM menu - skipping mod menu setup", LogLevel.Error);
+				Globals.Monitor.Log(e.Message, LogLevel.Error);
 				return false;
 			}
 		}
 
 		/// <summary>
-		/// Adds all descriptions and options to options page.
+		/// Adds all descriptions and options to options page. Adds disclaimer if content packs are loaded that they will take priority over values set here.
 		/// </summary>
 		public static void RegisterModOptions()
 		{
-
+			
 		}
 
 		/// <summary>
