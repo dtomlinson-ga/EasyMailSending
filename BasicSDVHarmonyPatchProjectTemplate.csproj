@@ -66,7 +66,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="LICENSE" />
+    <None Include="manifest.json" />
     <None Include="packages.config" />
+    <None Include="README" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
