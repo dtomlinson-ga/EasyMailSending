@@ -13,12 +13,16 @@
 // along with this program.  If not, see https://www.gnu.org/licenses/.
 
 using StardewModdingAPI;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace BasicSDVHarmonyPatchProjectTemplate
+namespace EasyMailSending
 {
 	internal class AssetEditor : IAssetEditor
 	{
-		
+
+		internal static Dictionary<string, string> mailToAdd = new();
+
 		/// <summary>
 		/// Attempts to load mod assets.
 		/// </summary>
@@ -33,7 +37,7 @@ namespace BasicSDVHarmonyPatchProjectTemplate
 		/// </summary>
 		public bool CanEdit<T>(IAssetInfo asset)
 		{
-			return false;
+			return asset.AssetNameEquals("Data/Mail");
 		}
 
 		/// <summary>
@@ -41,7 +45,13 @@ namespace BasicSDVHarmonyPatchProjectTemplate
 		/// </summary>
 		public void Edit<T>(IAssetData asset)
 		{
-
+			if (asset.AssetNameEquals("Data/Mail"))
+			{
+				foreach (KeyValuePair<string, string> mail in mailToAdd.ToList())
+				{
+					asset.AsDictionary<string, string>().Data.Add(mail.Key, mail.Value);
+				}
+			}
 		}
 
 		/// <summary>
@@ -49,7 +59,8 @@ namespace BasicSDVHarmonyPatchProjectTemplate
 		/// </summary>
 		public static void InvalidateCache()
 		{
-
+			Globals.Helper.Content.InvalidateCache("Data/Mail");
+			MailHelper.RefreshMailData();
 		}
 
 	}

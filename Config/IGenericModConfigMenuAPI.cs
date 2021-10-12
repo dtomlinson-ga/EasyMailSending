@@ -18,7 +18,7 @@ using StardewModdingAPI;
 using StardewModdingAPI.Utilities;
 using System;
 
-namespace BasicSDVHarmonyPatchProjectTemplate
+namespace EasyMailSending
 {
 	/// <summary>
 	/// API for interacting with spacechase0's Generic Mod Config Menu.

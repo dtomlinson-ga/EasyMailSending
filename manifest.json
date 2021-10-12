@@ -1,10 +1,16 @@
 {
-  "Name": "Basic Harmony Project Template",
+  "Name": "Easy Mail Sending",
   "Author": "Vertigon",
   "Version": "0.1.0",
-  "Description": "Template for small Harmony-based SDV mods.",
-  "UniqueID": "Vertigon.$safeprojectname$",
-  "EntryDll": "$safeprojectname$.dll",
+  "Description": "Provides a simple way to send mail without utilizing events or code.",
+  "UniqueID": "Vertigon.EasyMailSending",
+  "EntryDll": "EasyMailSending.dll",
   "MinimumApiVersion": "3.0.0",
-  "UpdateKeys": [ ]
+  "Dependencies": [
+    {
+      "UniqueID": "Pathoschild.ContentPatcher",
+      "MinimumVersion": "1.23.0"
+    }
+  ],
+  "UpdateKeys": []
 }

@@ -15,7 +15,7 @@
 using StardewModdingAPI;
 using System;
 
-namespace BasicSDVHarmonyPatchProjectTemplate
+namespace EasyMailSending
 {
 	/// <summary>
 	/// Collection of methods to simplify the process of adding Generic Mod Config Menu options.

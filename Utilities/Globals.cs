@@ -14,7 +14,7 @@
 
 using StardewModdingAPI;
 
-namespace BasicSDVHarmonyPatchProjectTemplate
+namespace EasyMailSending
 {
 	internal class Globals
 	{
